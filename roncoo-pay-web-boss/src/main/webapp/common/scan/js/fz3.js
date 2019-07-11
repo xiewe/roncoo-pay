@@ -11,7 +11,7 @@ function storeInfo(){
 //防止重复提交
 //5秒内无法二次点击
 function preventResubmission(){
-	$("#sub_button_first").
+	$("#sub_button_first").val();
 }
 
 //同步展示数据和隐藏数据
