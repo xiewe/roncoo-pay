@@ -67,17 +67,17 @@ public class ApiPageListResultVo {
 
 
 
-    public static  void main(String [] args ){
-
-        ApiPageListResultVo apiPageListResultVo = new ApiPageListResultVo();
-        apiPageListResultVo.setCode(-1);
-        apiPageListResultVo.setMsg("测试数据");
-
-        PageListVO pageListVO = new PageListVO(0,2,33,new ArrayList<Object>());
-
-        apiPageListResultVo.setData(pageListVO);
-
-        System.out.println(JSONObject.toJSONString(apiPageListResultVo));
-    }
+//    public static  void main(String [] args ){
+//
+//        ApiPageListResultVo apiPageListResultVo = new ApiPageListResultVo();
+//        apiPageListResultVo.setCode(-1);
+//        apiPageListResultVo.setMsg("测试数据");
+//
+//        PageListVO pageListVO = new PageListVO(0,2,33,new ArrayList<Object>());
+//
+//        apiPageListResultVo.setData(pageListVO);
+//
+//        System.out.println(JSONObject.toJSONString(apiPageListResultVo));
+//    }
 
 }

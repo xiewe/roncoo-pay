@@ -79,7 +79,7 @@ public class ApiCommonResultVo {
 		return data;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(JSONObject.toJSONString(new ApiCommonResultVo(-1, "", null)));
-	}
+//	public static void main(String[] args) {
+//		System.out.println(JSONObject.toJSONString(new ApiCommonResultVo(-1, "", null)));
+//	}
 }

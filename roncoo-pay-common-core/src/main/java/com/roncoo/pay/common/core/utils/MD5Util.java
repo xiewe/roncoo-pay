@@ -98,12 +98,12 @@ public class MD5Util {
         return hex[d1] + hex[d2];
     }
 
-    public static void main(String [] args ){
-
-        String ss = "test";
-        System.out.println(MD5Util.encode32(ss));
-        System.out.println(MD5Util.encode32ToUpperCase(ss));
-        System.out.println(MD5Util.encode16(ss));
-        System.out.println(MD5Util.encode16ToUpperCase(ss));
-    }
+//    public static void main(String [] args ){
+//
+//        String ss = "test";
+//        System.out.println(MD5Util.encode32(ss));
+//        System.out.println(MD5Util.encode32ToUpperCase(ss));
+//        System.out.println(MD5Util.encode16(ss));
+//        System.out.println(MD5Util.encode16ToUpperCase(ss));
+//    }
 }
