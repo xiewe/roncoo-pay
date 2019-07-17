@@ -3,6 +3,11 @@
 /* created on:     2016-6-29 18:28:57   www.roncoo.com          */
 /*==============================================================*/
 
+--CREATE SCHEMA IF NOT EXISTS `rc` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
+-- CREATE USER 'rc'@'%' IDENTIFIED BY 'rc123456'; 
+-- GRANT ALL PRIVILEGES ON `rc`.* TO 'rc'@'%' IDENTIFIED BY 'rc123456' WITH GRANT OPTION; 
+
+USE `rc`;
 
 drop table if exists rp_account;
 
@@ -620,15 +625,7 @@ INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('RECO
 /*==============================================================*/
 /* create function                                              */
 /*==============================================================*/
-CREATE FUNCTION `FUN_SEQ`(SEQ VARCHAR(50)) RETURNS BIGINT(20)
-BEGIN
-     UPDATE SEQ_TABLE
-     SET CURRENT_VALUE = CURRENT_VALUE + INCREMENT
-     WHERE  SEQ_NAME=SEQ;
-     RETURN FUN_SEQ_CURRENT_VALUE(SEQ);
-END;
-
-
+DELIMITER $
 CREATE FUNCTION `FUN_SEQ_CURRENT_VALUE`(SEQ VARCHAR(50)) RETURNS BIGINT(20)
 BEGIN
     DECLARE VALUE INTEGER;
@@ -637,33 +634,39 @@ BEGIN
     FROM SEQ_TABLE 
     WHERE SEQ_NAME=SEQ;
     RETURN VALUE;
-END;
+END $
 
+DELIMITER $
+CREATE FUNCTION `FUN_SEQ`(SEQ VARCHAR(50)) RETURNS BIGINT(20)
+BEGIN
+     UPDATE SEQ_TABLE
+     SET CURRENT_VALUE = CURRENT_VALUE + INCREMENT
+     WHERE  SEQ_NAME=SEQ;
+     RETURN FUN_SEQ_CURRENT_VALUE(SEQ);
+END $
+
+DELIMITER $
 CREATE FUNCTION `FUN_SEQ_SET_VALUE`(SEQ VARCHAR(50), VALUE INTEGER) RETURNS BIGINT(20)
 BEGIN
      UPDATE SEQ_TABLE 
      SET CURRENT_VALUE=VALUE
      WHERE SEQ_NAME=SEQ;
      RETURN FUN_SEQ_CURRENT_VALUE(SEQ);
-END;
+END $
 
+DELIMITER $
 CREATE FUNCTION  FUN_NOW()
  RETURNS DATETIME
 BEGIN 
 RETURN now();
-END;
-
+END $
 
 -- 时间函数
-
+DELIMITER $
 CREATE FUNCTION `FUN_DATE_ADD`(STR_DATE VARCHAR(10), STR_INTERVAL INTEGER) RETURNS DATE
 BEGIN
      RETURN date_add(STR_DATE, INTERVAL STR_INTERVAL DAY);
-END;
-
-
-
-
+END $
 
 
 -- -----------------------------------------------------------------------------------------------------------------------------------
@@ -1094,5 +1097,5 @@ insert into pms_permission (id,version,status,creater,create_time, editor, edit_
  (266, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','进件记录管理--查看','进件记录管理--查看','trade:micro:submit:record:list'),
  (267, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','进件记录管理--添加','进件记录管理--添加','trade:micro:submit:record:add'),
  (268, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','进件记录管理--查询','进件记录管理--查询','trade:micro:submit:record:query');
-
+commit;
 /*==============================小微商户进件==end=================================*/
