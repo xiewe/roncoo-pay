@@ -3,7 +3,7 @@
 /* created on:     2016-6-29 18:28:57   www.roncoo.com          */
 /*==============================================================*/
 
---CREATE SCHEMA IF NOT EXISTS `rc` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
+CREATE SCHEMA IF NOT EXISTS `rc` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
 -- CREATE USER 'rc'@'%' IDENTIFIED BY 'rc123456'; 
 -- GRANT ALL PRIVILEGES ON `rc`.* TO 'rc'@'%' IDENTIFIED BY 'rc123456' WITH GRANT OPTION; 
 
@@ -668,7 +668,7 @@ BEGIN
      RETURN date_add(STR_DATE, INTERVAL STR_INTERVAL DAY);
 END $
 
-
+delimiter ;
 -- -----------------------------------------------------------------------------------------------------------------------------------
 --                                   注意：该脚本运行在mysql环境下，如果是其他数据库，如有需要请先修改，再执行。                    --
 --                                                                                           编写人：沈佳龙   （www.roncoo.com）    --
